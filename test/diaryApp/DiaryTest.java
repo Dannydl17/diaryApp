@@ -16,22 +16,19 @@ class DiaryTest {
     @Test
     public void testThatDiaryCanHaveANameAndPasswordTest(){
         diary = new Diary("Danny", "123");
-        diary = new Diary(diary.getUserName(), diary.getPassword());
         Diaries diaries = new Diaries();
-        diaries.add(diary.getUserName(), diary.getPassword());
+        diaries.add(diary);
         assertEquals(1, diaries.count());
-        diary = new Diary("Dare", "423");
-        diary = new Diary(diary.getUserName(), diary.getPassword());
-        diaries.add(diary.getUserName(), diary.getPassword());
+        Diary diary1 = new Diary("Dare", "423");
+        diaries.add(diary1);
         assertEquals(2, diaries.count());
     }
 
     @Test
     public void testThatDiaryCanFindByUserNameTest(){
         diary = new Diary("Danny", "123");
-        diary = new Diary(diary.getUserName(), diary.getPassword());
         Diaries diaries = new Diaries();
-        diaries.add(diary.getUserName(), diary.getPassword());
+        diaries.add(diary);
         assertEquals(1, diaries.count());
         Diary newUserName = diaries.findByUserName("Danny");
         assertEquals("Danny", newUserName.generateUserName());
@@ -40,23 +37,32 @@ class DiaryTest {
     @Test
     public void testThatDiaryCanDeleteTest(){
         diary = new Diary("Danny", "123");
-        diary = new Diary(diary.getUserName(), diary.getPassword());
         Diaries diaries = new Diaries();
-        diaries.add(diary.getUserName(), diary.getPassword());
+        diaries.add(diary);
         assertEquals(1, diaries.count());
+        Diary diary1 = new Diary("Dare", "423");
+        diaries.add(diary1);
+        assertEquals(2, diaries.count());
         diaries.delete("Danny");
-        assertEquals(0, diaries.count());
+        assertEquals(1, diaries.count());
     }
 
     @Test
     public void testThatEntryCanBeCreatedInDiaryTest(){
+        Entry entry = new Entry(0, "My first day at school","I am boy");
         diary = new Diary("Danny", "123");
-        diary = new Diary(diary.getUserName(), diary.getPassword());
-        Diaries diaries = new Diaries();
-        diaries.add(diary.getUserName(), diary.getPassword());
-        assertEquals(1, diaries.count());
-        diaries.delete("Danny");
-        assertEquals(0, diaries.count());
+        diary.add(entry);
+        assertEquals(1, diary.count());
+    }
+    @Test
+    public void testThatEntryCanBeCreatedInDiaryTwiceTest(){
+        Entry entry = new Entry(0, "My first day at school","I am boy");
+        diary.add(entry);
+        assertEquals(1, diary.count());
+
+        entry = new Entry(1, "My second day at school","I am girl");
+        diary.add(entry);
+        assertEquals(2, diary.count());
     }
 
 }

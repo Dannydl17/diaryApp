@@ -8,7 +8,7 @@ public class Diary {
     private String password;
     private boolean isLocked;
     private List<Entry> entries = new ArrayList<>();
-
+    private int size;
     public Diary(String userName, String password){
         this.userName = userName;
         this.password = password;
@@ -24,5 +24,14 @@ public class Diary {
 
     public String generateUserName() {
         return userName;
+    }
+
+    public void add(Entry entry) {
+        entries.add(entry);
+        size++;
+    }
+
+    public int count() {
+        return entries.size();
     }
 }

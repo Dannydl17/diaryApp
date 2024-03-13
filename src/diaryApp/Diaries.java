@@ -8,12 +8,9 @@ import java.util.List;
 public class Diaries {
     private List<Diary> diaries = new ArrayList<>();
     private int size;
-    public void add(String userName, String password) {
-        String name = generateUserName(userName);
-        String passW = generatePassWord(password);
-        Diary diary = new Diary(name,passW);
+    public void add(Diary diary) {
+//        Diary diary = new Diary(name,passW);
         diaries.add(diary);
-        size++;
     }
 
     private String generateUserName(String userName) {
