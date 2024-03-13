@@ -20,6 +20,10 @@ class DiaryTest {
         Diaries diaries = new Diaries();
         diaries.add(diary.getUserName(), diary.getPassword());
         assertEquals(1, diaries.count());
+        diary = new Diary("Dare", "423");
+        diary = new Diary(diary.getUserName(), diary.getPassword());
+        diaries.add(diary.getUserName(), diary.getPassword());
+        assertEquals(2, diaries.count());
     }
 
     @Test
@@ -41,7 +45,18 @@ class DiaryTest {
         diaries.add(diary.getUserName(), diary.getPassword());
         assertEquals(1, diaries.count());
         diaries.delete("Danny");
-        assertEquals("Danny", newUserName.generateUserName());
+        assertEquals(0, diaries.count());
+    }
+
+    @Test
+    public void testThatEntryCanBeCreatedInDiaryTest(){
+        diary = new Diary("Danny", "123");
+        diary = new Diary(diary.getUserName(), diary.getPassword());
+        Diaries diaries = new Diaries();
+        diaries.add(diary.getUserName(), diary.getPassword());
+        assertEquals(1, diaries.count());
+        diaries.delete("Danny");
+        assertEquals(0, diaries.count());
     }
 
 }
