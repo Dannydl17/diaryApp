@@ -33,4 +33,7 @@ public class Entry {
         return date;
     }
 
+    public void setBody(String body) {
+        this.body = body;
+    }
 }

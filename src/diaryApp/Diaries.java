@@ -13,20 +13,13 @@ public class Diaries {
         diaries.add(diary);
     }
 
-    private String generateUserName(String userName) {
-        return userName;
-    }
-    private String generatePassWord(String password) {
-        return password;
-    }
-
     public int count() {
         return diaries.size();
     }
 
     public Diary findByUserName(String userName) {
         for(Diary diary: diaries){
-            if(diary.generateUserName().equals(userName)){
+            if(diary.getUserName().equals(userName)){
                 return diary;
             }
         }
